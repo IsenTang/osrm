@@ -1,6 +1,9 @@
 FROM osrm/osrm-backend
 
+COPY ./start.sh ./start.sh
 
+RUN chmod 777 ./start.sh
 
+CMD [ "sh","./start.sh" ]
 
-CMD [ "osrm-routed","--algorithm" "mld" "/data/berlin-latest.osrm" ]
+EXPOSE 5000
