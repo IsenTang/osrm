@@ -38,22 +38,20 @@ phases:
 
         # Tag Image
         - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-    # post_build:
-    #     commands:
-    #     - echo Build completed on `date`
-    #     - echo Pushing the Docker images...
-    #     - docker push $REPOSITORY_URI:latest # latest Tag
-    #     - docker push $REPOSITORY_URI:$VERSION # Image Tag
+    post_build:
+        commands:
+        - echo Build completed on `date`
+        - echo Pushing the Docker images...
+        - docker push $REPOSITORY_URI:latest # latest Tag
+        - docker push $REPOSITORY_URI:$VERSION # Image Tag
 
-    #     # %s => $REPOSITORY_URI:$VERSION
-    #     # Task Definition => Container Name
-    #     - echo Writing dev image definitions file...
-    #     - printf '[{"name":"redis-test","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > development_imagedefinitions.json
-    #     - echo Writing clock dev image definitions file...
-    #     - printf '[{"name":"clock-dev","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > clock_development_imagedefinitions.json
+        # %s => $REPOSITORY_URI:$VERSION
+        # Task Definition => Container Name
+        - echo Writing dev image definitions file...
+        - printf '[{"name":"osrm-test","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > imagedefinitions.json
 
 
-# artifacts:
-#     files:
-#     - development_imagedefinitions.json
-#     - clock_development_imagedefinitions.json
+artifacts:
+    files:
+    - imagedefinitions.json
+   
