@@ -32,12 +32,14 @@ wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
 
 ls
 
-# echo osrm-partition...
-# osrm-partition /data/berlin-latest.osrm
+cd ..
 
-# echo osrm-customize....
-# osrm-customize /data/berlin-latest.osrm
+echo osrm-partition...
+osrm-partition /data/berlin-latest.osrm
 
-# echo osrm-routed.....
+echo osrm-customize....
+osrm-customize /data/berlin-latest.osrm
 
-# osrm-routed --algorithm=MLD /data/berlin-latest.osrm
+echo osrm-routed.....
+
+osrm-routed --algorithm=MLD /data/berlin-latest.osrm
