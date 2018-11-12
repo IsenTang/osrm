@@ -37,7 +37,7 @@ phases:
     
 
         # Tag Image
-        - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$(jq .version package.json -r)
+        - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$(COMMIT_HASH)
     # post_build:
     #     commands:
     #     - echo Build completed on `date`
