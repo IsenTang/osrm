@@ -1,3 +1,7 @@
+
+FROM alpine:latest
+
+
 FROM osrm/osrm-backend
 
 COPY ./start.sh ./start.sh
