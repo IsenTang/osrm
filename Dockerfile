@@ -1,4 +1,4 @@
-FROM alpine:latest
+# FROM alpine:latest
 
 FROM osrm/osrm-backend
 
