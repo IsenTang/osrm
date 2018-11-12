@@ -39,7 +39,7 @@ phases:
         # Tag Image
         - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
-        
+
     post_build:
         commands:
         - echo Build completed on `date`
@@ -50,7 +50,7 @@ phases:
         # %s => $REPOSITORY_URI:$VERSION
         # Task Definition => Container Name
         - echo Writing dev image definitions file...
-        - printf '[{"name":"osrm-test","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > imagedefinitions.json
+        - printf '[{"name":"osrm-test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
 
 artifacts:
