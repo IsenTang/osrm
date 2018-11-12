@@ -26,7 +26,7 @@
 # echo osrm-extract.....
 # osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
-yum -y install wget
+apt-get install wget
 
 mkdir data
 cd data

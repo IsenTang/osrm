@@ -1,6 +1,4 @@
-
 FROM alpine:latest
-
 
 FROM osrm/osrm-backend
 
