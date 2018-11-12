@@ -43,7 +43,7 @@ phases:
         - echo Build completed on `date`
         - echo Pushing the Docker images...
         - docker push $REPOSITORY_URI:latest # latest Tag
-        - docker push $REPOSITORY_URI:$VERSION # Image Tag
+        - docker push $REPOSITORY_URI:$IMAGE_TAG # Image Tag
 
         # %s => $REPOSITORY_URI:$VERSION
         # Task Definition => Container Name
