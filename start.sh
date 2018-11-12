@@ -30,8 +30,6 @@
 
 ls
 
-cd ..
-
 echo osrm-partition...
 osrm-partition /data/berlin-latest.osrm
 
