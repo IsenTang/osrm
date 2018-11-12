@@ -15,6 +15,17 @@ WORKDIR /
 
 COPY ./start.sh ./start.sh
 
+COPY ./car.lua ./car.lua
+
+RUN echo osrm-extract.....
+RUN osrm-extract /data/berlin-latest.osm.pbf  -p ./car.lua
+
+
+RUN echo osrm-partition...
+RUN osrm-partition /data/berlin-latest.osrm
+
+RUN echo osrm-customize....
+RUN osrm-customize /data/berlin-latest.osrm 
 
 RUN chmod 777 ./start.sh
 
