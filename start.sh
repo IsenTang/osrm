@@ -28,7 +28,8 @@
 
 
 
-ls
+echo osrm-extract.....
+osrm-extract /data/berlin-latest.osm.pbf 
 
 echo osrm-partition...
 osrm-partition /data/berlin-latest.osrm
