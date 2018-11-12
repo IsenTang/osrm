@@ -1,0 +1,60 @@
+version: 0.2
+
+# Environment Variables stored in paramet-store and used for building
+env:
+    parameter-store:
+        NPM_TOKEN: NPM_TOKEN
+        AWS_ACCESS_KEY_ID: AMAZON_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY: AMAZON_SECRET_ACCESS_KEY
+
+
+phases:
+    install:
+        commands:
+        - apt-get update && apt-get install -y jq
+    #build before
+    pre_build:
+        commands:
+
+        - echo Logging in to Amazon ECR...
+        - aws --version
+        # Login into aws with user account
+        - eval $( aws ecr get-login --no-include-email --region us-east-1 )
+        # ECR Repo name, change according to building environment
+        - REPOSITORY_URI=908117773420.dkr.ecr.us-east-1.amazonaws.com/osrm
+        # Commit hash var
+        - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+        # Image Tag var
+        - IMAGE_TAG=${COMMIT_HASH:=latest}
+        # Vanguard version
+        - VERSION=$(jq .version package.json -r)
+
+    build:
+        commands:
+        - echo Build started on `date`
+        - echo Building the Docker image...
+        - echo $NPM_TOKEN
+        - docker build  -t $REPOSITORY_URI:latest .
+    
+
+        # Tag Image
+        - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$(jq .version package.json -r)
+    # post_build:
+    #     commands:
+    #     - echo Build completed on `date`
+    #     - echo Pushing the Docker images...
+    #     - docker push $REPOSITORY_URI:latest # latest Tag
+    #     - docker push $REPOSITORY_URI:$VERSION # Image Tag
+
+    #     # %s => $REPOSITORY_URI:$VERSION
+    #     # Task Definition => Container Name
+    #     - echo Writing dev image definitions file...
+    #     - printf '[{"name":"redis-test","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > development_imagedefinitions.json
+    #     - echo Writing clock dev image definitions file...
+    #     - printf '[{"name":"clock-dev","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > clock_development_imagedefinitions.json
+
+
+# artifacts:
+#     files:
+#     - development_imagedefinitions.json
+#     - clock_development_imagedefinitions.json
