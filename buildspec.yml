@@ -26,8 +26,7 @@ phases:
         - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
         # Image Tag var
         - IMAGE_TAG=${COMMIT_HASH:=latest}
-        # Vanguard version
-        - VERSION=$(jq .version package.json -r)
+        # Vanguard versio
 
     build:
         commands:
