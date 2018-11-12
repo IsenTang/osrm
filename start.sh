@@ -26,8 +26,11 @@
 # echo osrm-extract.....
 # osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
+yum -y install wget
+
 mkdir data
 cd data
+
 wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
 
 ls
