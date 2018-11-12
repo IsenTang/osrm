@@ -15,7 +15,7 @@ WORKDIR /
 
 COPY ./start.sh ./start.sh
 
-COPY ./car.lua ./car.lua
+COPY ./car.lua ./data/car.lua
 
 
 

@@ -27,7 +27,7 @@
 # osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
 echo osrm-extract.....
-osrm-extract /data/berlin-latest.osm.pbf  -p ./car.lua
+osrm-extract /data/berlin-latest.osm.pbf  -p ./data/car.lua
 
 
 echo osrm-partition...
