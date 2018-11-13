@@ -9,9 +9,6 @@ env:
 
 
 phases:
-    install:
-        commands:
-        - apt-get update && apt-get install -y jq
     #build before
     pre_build:
         commands:

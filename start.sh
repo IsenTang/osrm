@@ -21,10 +21,14 @@
 
 # docker run -t -i -p 5000:5000 -v $(pwd):/data osrm/osrm-backend osrm-routed --algorithm mld /data/pennsylvania-latest.osm.pbf
 
+cd data
+
+ls
+
+echo osrm-extract.....
+osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
 
-# echo osrm-extract.....
-# osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
 echo osrm-extract.....
 osrm-extract /data/berlin-latest.osm.pbf  -p ./data/car.lua
