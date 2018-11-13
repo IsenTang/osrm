@@ -21,9 +21,6 @@
 
 # docker run -t -i -p 5000:5000 -v $(pwd):/data osrm/osrm-backend osrm-routed --algorithm mld /data/pennsylvania-latest.osm.pbf
 
-cd data
-
-ls
 
 
 echo osrm-routed.....

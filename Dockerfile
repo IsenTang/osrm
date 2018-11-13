@@ -21,9 +21,6 @@ WORKDIR /opt
 RUN echo osrm-extract.....
 RUN osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
 
-RUN echo osrm-extract.....
-RUN osrm-extract /data/berlin-latest.osm.pbf  -p ./data/car.lua
-
 
 RUN echo osrm-partition...
 RUN osrm-partition /data/berlin-latest.osrm
