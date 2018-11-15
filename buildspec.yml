@@ -37,13 +37,13 @@ phases:
             do
             let index=$(($k - 1))
             let name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
-            let IMAGE_TAG = $name + "-" + $VERSION
+            let IMAGE_TAG = $name + "-" + $VERSION;
             let address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
-            docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address
-            echo Pushing the Docker images...
-            docker push $REPOSITORY_URI:$IMAGE_TAG 
-            echo Writing dev image definitions file...
-            printf '[{"name":"osrm-"+$name,"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > ${name}-imagedefinitions.json
+            docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address;
+            echo Pushing the Docker images...;
+            docker push $REPOSITORY_URI:$IMAGE_TAG ;
+            echo Writing dev image definitions file...;
+            printf '[{"name":"osrm-"+$name,"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > ${name}-imagedefinitions.json;
             done
 
 
