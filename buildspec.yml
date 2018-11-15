@@ -41,7 +41,7 @@ phases:
             IMAGE_TAG=$name-$VERSION;
             echo $IMAGE_TAG;
             address=$(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
-            docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address;
+            docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --build-arg ADDRESS=$address;
             echo Pushing the Docker images...;
             docker push $REPOSITORY_URI:$IMAGE_TAG ;
             echo Writing dev image definitions file...;
