@@ -46,7 +46,7 @@ phases:
             echo Pushing the Docker images...;
             docker push $REPOSITORY_URI:$IMAGE_TAG ;
             echo Writing dev image definitions file...;
-            printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_NAME $REPOSITORY_URI:$IMAGE_TAG > $name-imagedefinitions.json;
+            printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions-$name.json;
             done
 
 
@@ -61,5 +61,5 @@ phases:
 
 artifacts:
     files:
-    - *-imagedefinitions.json
+    - imagedefinitions-*.json
    
