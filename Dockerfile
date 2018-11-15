@@ -10,7 +10,7 @@ ARG ADDRESS
 
 RUN echo ${ADDRESS}
 
-RUN wget ${ADDRESS} -O /data/map-latest.osm.pbf 
+RUN wget ${ADDRESS} 
  
 
 COPY ./start.sh /start.sh
