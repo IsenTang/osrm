@@ -10,7 +10,7 @@ ARG ADDRESS
 
 RUN echo ${ADDRESS}
 
-ADD ${ADDRESS} /data/map-latest.osm.pbf 
+ADD http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf /data/map-latest.osm.pbf 
  
 
 COPY ./start.sh /start.sh
