@@ -25,4 +25,4 @@
 
 echo osrm-routed.....
 
-osrm-routed --algorithm=MLD /data/berlin-latest.osrm
+osrm-routed --algorithm=MLD /data/map-latest.osrm

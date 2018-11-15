@@ -8,9 +8,11 @@ RUN apt-get install -y wget
 
 ARG ADDRESS
 
+RUN echo ${ADDRESS}
+
 WORKDIR  /data
 
-RUN wget ADDRESS -o  map-latest.osm.pdf
+RUN wget ${ADDRESS} -o  map-latest.osm.pdf
 
 
 COPY ./start.sh /start.sh
