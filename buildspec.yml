@@ -39,7 +39,7 @@ phases:
             index=$(($k - 1));
             name=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
             IMAGE_TAG=$name-$VERSION;
-            IMAGE_NAME=osrm-test;
+            IMAGE_NAME=osrm-$name;
             echo $IMAGE_TAG;
             address=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
             docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --build-arg ADDRESS=$address;
@@ -48,14 +48,6 @@ phases:
             echo Writing dev image definitions file...;
             printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions-$name.json;
             done
-
-
-    post_build:
-        commands:
-
-
-        # %s => $REPOSITORY_URI:$VERSION
-        # Task Definition => Container Name
        
 
 
