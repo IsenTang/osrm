@@ -39,13 +39,14 @@ phases:
             index=$(($k - 1));
             name=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
             IMAGE_TAG=$name-$VERSION;
+            IMAGE_NAME=osrm-test;
             echo $IMAGE_TAG;
             address=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
             docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --build-arg ADDRESS=$address;
             echo Pushing the Docker images...;
             docker push $REPOSITORY_URI:$IMAGE_TAG ;
             echo Writing dev image definitions file...;
-            printf '[{"name":"osrm-"+$name,"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > ${name}-imagedefinitions.json;
+            printf '[{"name":$IMAGE_NAME,"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > $name-imagedefinitions.json;
             done
 
 
