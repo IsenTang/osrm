@@ -10,7 +10,7 @@ ARG ADDRESS
 
 WORKDIR  /data
 
-RUN wget "http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf" -o  map-latest.osm.pdf
+RUN wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -o  map-latest.osm.pdf
 
 
 COPY ./start.sh /start.sh
