@@ -8,15 +8,19 @@ RUN apt-get install -y wget
 
 ARG ADDRESS
 
-RUN echo ${ADDRESS}
+WORKDIR /data
 
-RUN wget ${ADDRESS} 
+RUN wget ${ADDRESS} -O map-latest.osm.pbf
  
 
 COPY ./start.sh /start.sh
 
 
 COPY ./car.lua /data/car.lua
+
+RUN pwd
+
+RUN ls
 
 WORKDIR /opt
 
