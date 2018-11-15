@@ -37,9 +37,9 @@ phases:
         - for k in $( jq '.osrm | length' config.json );
             do
             index=$(($k - 1));
-            name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
-            IMAGE_TAG = $name + "-" + $VERSION;
-            address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
+            name=$(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
+            IMAGE_TAG=$name + "-" + $VERSION;
+            address=$(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
             docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address;
             echo Pushing the Docker images...;
             docker push $REPOSITORY_URI:$IMAGE_TAG ;
