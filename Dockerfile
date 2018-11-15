@@ -10,7 +10,7 @@ ARG ADDRESS
 
 
 
-RUN wget ${ADDRESS} -O  /data/map-latest.osm.pdf
+RUN wget $ADDRESS -O  /data/map-latest.osm.pdf
 
 
 COPY ./start.sh /start.sh
