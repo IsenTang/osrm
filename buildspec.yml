@@ -31,12 +31,12 @@ phases:
 
     build:
         commands:
-        - echo version
+        - echo $VERSION
         - echo Build started on `date`
         - echo Building the Docker image...
-        - for k in $( jq '.osrm | length' config.json )
+        - for k in $( jq '.osrm | length' config.json );
             do
-            index=$(($k - 1))
+            index=$(($k - 1));
             name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
             IMAGE_TAG = $name + "-" + $VERSION;
             address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
