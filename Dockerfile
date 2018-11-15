@@ -9,7 +9,7 @@ RUN apt-get install -y wget
 ARG ADDRESS
 
 
-RUN wget ${ADDRESS} -O  /data/map-latest.osm.pdf
+RUN wget "http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf" -O  /data/map-latest.osm.pdf
 
 
 COPY ./start.sh /start.sh
