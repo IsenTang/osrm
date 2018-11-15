@@ -31,9 +31,10 @@ phases:
 
     build:
         commands:
+        - echo $VERSION
         - echo Build started on `date`
         - echo Building the Docker image...
-         - for k in $( jq '.osrm | length' config.json )
+        - for k in $( jq '.osrm | length' config.json )
             do
             let index=$(($k - 1))
             let name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
