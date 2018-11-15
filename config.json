@@ -1,0 +1,9 @@
+{
+    "version": "1.0",
+    "osrm":[
+        {
+            "name":"berlin",
+            "address":"http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf"
+        }
+    ]
+}

@@ -6,9 +6,11 @@ RUN apt-get update
 
 RUN apt-get install -y wget
 
+ARG ADDRESS
+
 WORKDIR  /data
 
-RUN wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
+RUN wget ADDRESS -o  map-latest.osm.pdf
 
 
 COPY ./start.sh /start.sh
@@ -19,14 +21,14 @@ COPY ./car.lua /data/car.lua
 WORKDIR /opt
 
 RUN echo osrm-extract.....
-RUN osrm-extract /data/berlin-latest.osm.pbf -p /data/car.lua
+RUN osrm-extract /data/map-latest.osm.pbf -p /data/car.lua
 
 
 RUN echo osrm-partition...
-RUN osrm-partition /data/berlin-latest.osrm
+RUN osrm-partition /data/map-latest.osrm
 
 RUN echo osrm-customize....
-RUN osrm-customize /data/berlin-latest.osrm 
+RUN osrm-customize /data/map-latest.osrm 
 
 RUN chmod 777 /start.sh
 

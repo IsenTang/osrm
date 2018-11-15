@@ -9,9 +9,14 @@ env:
 
 
 phases:
+    install:
+        commands:
+        - apt-get update && apt-get install -y jq
+
     #build before
     pre_build:
         commands:
+        
 
         - echo Logging in to Amazon ECR...
         - aws --version
@@ -21,36 +26,40 @@ phases:
         - REPOSITORY_URI=908117773420.dkr.ecr.us-east-1.amazonaws.com/osrm
         # Commit hash var
         - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-        # Image Tag var
-        - IMAGE_TAG=${COMMIT_HASH:=latest}
-        # Vanguard versio
+        # Osrm versio
+        - VERSION=$(jq .version config.json -r)
 
     build:
         commands:
         - echo Build started on `date`
         - echo Building the Docker image...
-        - echo $NPM_TOKEN
-        - docker build  -t $REPOSITORY_URI:latest .
-    
+        - declare -i index=0
+        - declare -i LENGTH=$( jq '.osrm | length' config.json )
+         - for k in $LENGTH
+            do
+            let index=$(($k - 1))
+            let name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
+            let IMAGE_TAG = $name + "-" + $VERSION
+            let address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
+            docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address
+            echo Pushing the Docker images...
+            docker push $REPOSITORY_URI:$IMAGE_TAG # latest Tag
 
-        # Tag Image
-        - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+            echo Writing dev image definitions file...
+            printf '[{"name":"osrm-"+$name,"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > ${name}-imagedefinitions.json
+            done
 
 
     post_build:
         commands:
-        - echo Build completed on `date`
-        - echo Pushing the Docker images...
-        - docker push $REPOSITORY_URI:latest # latest Tag
-        - docker push $REPOSITORY_URI:$IMAGE_TAG # Image Tag
+
 
         # %s => $REPOSITORY_URI:$VERSION
         # Task Definition => Container Name
-        - echo Writing dev image definitions file...
-        - printf '[{"name":"osrm-test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+       
 
 
 artifacts:
     files:
-    - imagedefinitions.json
+    - **
    
