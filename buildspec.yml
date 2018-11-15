@@ -61,5 +61,5 @@ phases:
 
 artifacts:
     files:
-    - /*
+    - berlin-imagedefinitions.json
    
