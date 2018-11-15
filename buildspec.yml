@@ -35,10 +35,10 @@ phases:
         - echo Building the Docker image...
         - for k in $( jq '.osrm | length' config.json );
             do
-            let index=$(($k - 1))
-            let name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
-            let IMAGE_TAG = $name + "-" + $VERSION;
-            let address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
+            index=$(($k - 1))
+            name = $(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
+            IMAGE_TAG = $name + "-" + $VERSION;
+            address =  $(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
             docker  build  -t $REPOSITORY_URI:$IMAGE_TAG . --arg ADDRESS=$address;
             echo Pushing the Docker images...;
             docker push $REPOSITORY_URI:$IMAGE_TAG ;
