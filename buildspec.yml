@@ -37,7 +37,7 @@ phases:
         - for k in $( jq '.osrm | length' config.json );
             do
             index=$(($k - 1));
-            name=$(jq --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
+            name=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
             IMAGE_TAG=“$name-$VERSION”;
             echo $IMAGE_TAG;
             address=$(jq --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
