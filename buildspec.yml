@@ -34,11 +34,13 @@ phases:
         - echo $VERSION
         - echo Build started on `date`
         - echo Building the Docker image...
+        - UPDATE_DATE=`date +%Y-%m-%d`
+        - echo update at $UPDATE_DATE
         - for k in $(seq 1 $( jq '.osrm | length' config.json ));
             do
             index=$(($k - 1));
             name=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .name ' config.json );
-            IMAGE_TAG=$name-$VERSION;
+            IMAGE_TAG=$name-$VERSION-$UPDATE_DATE;
             IMAGE_NAME=osrm-$name;
             echo $IMAGE_TAG;
             address=$(jq -r --arg index $index '.osrm | .[$index | tonumber] | .address ' config.json );
