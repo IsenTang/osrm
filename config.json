@@ -2,44 +2,12 @@
     "version": "1.0",
     "osrm":[
         {
-            "name":"Indiana",
-            "address":"http://download.geofabrik.de/north-america/us/indiana-latest.osm.pbf"
+            "name":"Spain",
+            "address":"http://download.geofabrik.de/europe/spain-latest.osm.pbf"
         },
         {
-            "name":"Michigan",
-            "address":"http://download.geofabrik.de/north-america/us/michigan-latest.osm.pbf"
-        },
-        {
-            "name":"Arizona",
-            "address":"http://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf"
-        },
-        {
-            "name":"Florida",
-            "address":"http://download.geofabrik.de/north-america/us/florida-latest.osm.pbf"
-        },
-        {
-            "name":"Illinois",
-            "address":"http://download.geofabrik.de/north-america/us/illinois-latest.osm.pbf"
-        },
-        {
-            "name":"Massachusetts",
-            "address":"http://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf"
-        },
-        {
-            "name":"Minnesota",
-            "address":"http://download.geofabrik.de/north-america/us/minnesota-latest.osm.pbf"
-        },
-        {
-            "name":"NewJersey",
-            "address":"http://download.geofabrik.de/north-america/us/new-jersey-latest.osm.pbf"
-        },
-        {
-            "name":"Ohio",
-            "address":"http://download.geofabrik.de/north-america/us/ohio-latest.osm.pbf"
-        },
-        {
-            "name":"Pennsylvania",
-            "address":"http://download.geofabrik.de/north-america/us/pennsylvania-latest.osm.pbf"
+            "name":"France",
+            "address":"http://download.geofabrik.de/europe/france-latest.osm.pbf"
         }
         
     ]

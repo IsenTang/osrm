@@ -15,12 +15,7 @@ RUN wget ${ADDRESS} -O map-latest.osm.pbf
 
 COPY ./start.sh /start.sh
 
-
 COPY ./car.lua /data/car.lua
-
-RUN pwd
-
-RUN ls
 
 WORKDIR /opt
 
