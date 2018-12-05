@@ -6,7 +6,17 @@ RUN apt-get update
 
 RUN apt-get install -y wget
 
-RUN apt-get install libboost-dev
+RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.7z
+
+RUN sudo apt-get install dtrx
+
+RUN dtrx boost_1_67_0.7z
+
+RUN ./bootstrap.sh --with-toolset=clang
+
+RUN sudo ./b2 install
+
+RUN sudo ldconfig /usr/local/lib
 
 ARG ADDRESS
 
