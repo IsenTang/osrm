@@ -1,6 +1,6 @@
 # FROM alpine:latest
 
-FROM osrm/osrm-backend:v5.17.1
+FROM osrm/osrm-backend:v5.18.0
 
 # RUN apt-get update 
 
