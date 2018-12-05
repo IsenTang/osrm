@@ -10,7 +10,7 @@ ARG ADDRESS
 
 WORKDIR /data
 
-RUN wget ${ADDRESS}} -O map-latest.osm.pbf
+RUN wget ${ADDRESS} -O map-latest.osm.pbf
  
 
 COPY ./start.sh /start.sh
