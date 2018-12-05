@@ -7,7 +7,7 @@
         },
         {
             "name":"France",
-            "address":"http://download.geofabrik.de/europe/france-latest.osm.pbf"
+            "address":"http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf"
         }
         
     ]
