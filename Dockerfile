@@ -8,7 +8,7 @@ RUN apt-get install -y wget
 
 RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.7z
 
-RUN sudo apt-get install dtrx
+RUN apt-get install dtrx
 
 RUN dtrx boost_1_67_0.7z
 
