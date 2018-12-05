@@ -2,10 +2,6 @@
     "version": "1.0",
     "osrm":[
         {
-            "name":"Spain",
-            "address":"http://download.geofabrik.de/europe/spain-latest.osm.pbf"
-        },
-        {
             "name":"France",
             "address":"http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf"
         }
