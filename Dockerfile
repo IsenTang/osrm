@@ -6,6 +6,8 @@ RUN apt-get update
 
 RUN apt-get install -y wget
 
+RUN apt-get install libboost-dev
+
 ARG ADDRESS
 
 WORKDIR /data
