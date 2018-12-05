@@ -1,6 +1,6 @@
 # FROM alpine:latest
 
-FROM osrm/osrm-backend:v5.18.0-debug
+FROM osrm/osrm-backend:latest
 
 RUN apt-get update 
 
@@ -10,7 +10,7 @@ ARG ADDRESS
 
 WORKDIR /data
 
-RUN wget http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf -O map-latest.osm.pbf
+RUN wget ${ADDRESS}} -O map-latest.osm.pbf
  
 
 COPY ./start.sh /start.sh
