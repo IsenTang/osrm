@@ -1,28 +1,16 @@
 # FROM alpine:latest
 
-FROM osrm/osrm-backend
+FROM osrm/osrm-backend:v5.18.0-debug
 
 RUN apt-get update 
 
 RUN apt-get install -y wget
 
-RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.7z
-
-RUN apt-get install dtrx
-
-RUN dtrx boost_1_67_0.7z
-
-RUN ./bootstrap.sh --with-toolset=clang
-
-RUN sudo ./b2 install
-
-RUN sudo ldconfig /usr/local/lib
-
 ARG ADDRESS
 
 WORKDIR /data
 
-RUN wget ${ADDRESS} -O map-latest.osm.pbf
+RUN wget http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf -O map-latest.osm.pbf
  
 
 COPY ./start.sh /start.sh
