@@ -1,10 +1,10 @@
 # FROM alpine:latest
 
-FROM osrm/osrm-backend:v5.18.0-debug
+FROM osrm/osrm-backend:v5.20.0
 
-# RUN apt-get update 
+RUN apt-get update 
 
-# RUN apt-get install -y wget
+RUN apt-get install -y wget
 
 ARG ADDRESS
 
