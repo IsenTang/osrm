@@ -8,6 +8,7 @@ FROM osrm/osrm-backend:v5.20.0
 
 ARG ADDRESS
 
+
 WORKDIR /data
 
 RUN wget ${ADDRESS} -O map-latest.osm.pbf
