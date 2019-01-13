@@ -1,6 +1,6 @@
 # FROM alpine:latest
 
-FROM osrm/osrm-backend:v5.20.0
+FROM osrm/osrm-backend
 
 # RUN apt-get update 
 
@@ -18,6 +18,8 @@ COPY ./start.sh /start.sh
 
 COPY ./car.lua /data/car.lua
 
+COPY ./bicycle.lua /data/bicycle.lua
+
 WORKDIR /data
 
 RUN ls
@@ -25,7 +27,7 @@ RUN ls
 WORKDIR /opt
 
 RUN echo osrm-extract.....
-RUN osrm-extract /data/map-latest.osm.pbf  -p /opt/bike.lua
+RUN osrm-extract /data/map-latest.osm.pbf  -p /data/bicycle.lua
 # RUN osrm-extract /data/map-latest.osm.pbf -p /data/car.lua
 
 
