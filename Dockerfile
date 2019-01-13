@@ -2,9 +2,9 @@
 
 FROM osrm/osrm-backend
 
-# RUN apt-get update 
+RUN apt-get update 
 
-# RUN apt-get install -y wget
+RUN apt-get install -y wget
 
 ARG ADDRESS
 
