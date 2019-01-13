@@ -18,10 +18,13 @@ COPY ./start.sh /start.sh
 
 COPY ./car.lua /data/car.lua
 
+COPY ./bicycle.lua /data/bicycle.lua
+
 WORKDIR /opt
 
 RUN echo osrm-extract.....
-RUN osrm-extract /data/map-latest.osm.pbf -p /data/car.lua
+RUN osrm-extract /data/map-latest.osm.pbf -p /data/bicycle.lua
+# RUN osrm-extract /data/map-latest.osm.pbf -p /data/car.lua
 
 
 RUN echo osrm-partition...

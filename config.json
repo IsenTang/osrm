@@ -2,8 +2,8 @@
     "version": "1.0",
     "osrm":[
         {
-            "name":"Wisconsin",
-            "address":"http://download.geofabrik.de/north-america/us/wisconsin-latest.osm.pbf"
+            "name":"NewYork",
+            "address":"http://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf"
         } 
     ]
 }
