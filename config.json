@@ -2,8 +2,8 @@
     "version": "1.0",
     "osrm":[
         {
-            "name":"Minnesota",
-            "address":"http://download.geofabrik.de/north-america/us/minnesota-latest.osm.pbf"
+            "name":"Massachusetts",
+            "address":"http://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf"
         }
     ]
 }
