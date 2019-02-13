@@ -2,12 +2,8 @@
     "version": "1.0",
     "osrm":[
         {
-            "name":"Indiana",
-            "address":"http://download.geofabrik.de/north-america/us/indiana-latest.osm.pbf"
-        },
-        {
-            "name":"Illinois",
-            "address":"http://download.geofabrik.de/north-america/us/illinois-latest.osm.pbf"
+            "name":"Arizona",
+            "address":"http://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf"
         }
     ]
 }
